@@ -1,8 +1,8 @@
 public class Robot implements MovableToy {
 
+  private final MoveVerifier controller;
   private Coordinates location;
   private FacingOption facing;
-  private final MoveVerifier controller;
 
   public Robot(int x, int y, FacingOption facing, MoveVerifier controller) {
     location = new Coordinates(x, y);
@@ -11,15 +11,14 @@ public class Robot implements MovableToy {
   }
 
   @Override
-  public void printLocation() {
-    printLocation("");
+  public String getIdentity() {
+    return "Robot";
   }
 
   @Override
-  public void printLocation(String index) {
+  public void printLocation() {
     System.out.printf(
-        "Robot %s: %d,%d,%s \n",
-        index,
+        "%d,%d,%s\n",
         location.x,
         location.y,
         facing
@@ -63,6 +62,8 @@ public class Robot implements MovableToy {
   // Keep integer within options list. Example: List length = 4, 5 becomes 1.
   int keepIndexWithinBounds(int value, int length) {
     int index = value % (length);
+    // Since Java keeps negative values negative after a modulus operation, we must add the length
+    // to get the positive value.
     if (index < 0) {
       index += length;
     }
@@ -70,7 +71,6 @@ public class Robot implements MovableToy {
   }
 
   private void turn(int facingIndex) {
-
     facing = FacingOption.values()[
         keepIndexWithinBounds(facingIndex, FacingOption.values().length)
         ];
