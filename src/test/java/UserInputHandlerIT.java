@@ -32,7 +32,6 @@ class UserInputHandlerIT {
   void textFileInputTestAllCommandsWithPossibleCollision() {
     String[] arguments = {"src/test/resources/testCommands.txt"};
     UserInputHandler.main(arguments);
-
     assertTrue(outputStreamCaptor.toString()
         .contains(
             "2 robots are present."));

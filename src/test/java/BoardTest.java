@@ -10,9 +10,8 @@ import org.junit.jupiter.api.Test;
 
 class BoardTest {
 
-  Board board = new Board(5, 5);
-
   private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+  Board board = new Board(5, 5);
 
   @BeforeEach
   void setup() {
@@ -62,7 +61,7 @@ class BoardTest {
     board.addToy(robot);
     board.applyOption(InputOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("1 robot is present."));
-    assertTrue(outputStreamCaptor.toString().contains("Active: 1"));
+    assertTrue(outputStreamCaptor.toString().contains("Active Robot: 1"));
   }
 
   @Test
@@ -72,7 +71,7 @@ class BoardTest {
 
     board.applyOption(InputOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("2 robots are present."));
-    assertTrue(outputStreamCaptor.toString().contains("Active: 1"));
+    assertTrue(outputStreamCaptor.toString().contains("Active Robot: 1"));
   }
 
   @Test
@@ -83,6 +82,6 @@ class BoardTest {
 
     board.applyOption(InputOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("2 robots are present."));
-    assertTrue(outputStreamCaptor.toString().contains("Active: 2"));
+    assertTrue(outputStreamCaptor.toString().contains("Active Robot: 2"));
   }
 }

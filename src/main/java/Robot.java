@@ -1,6 +1,7 @@
 public class Robot implements MovableToy {
 
   private final MoveVerifier controller;
+  private final UserOutput output = new TerminalOutput();
   private Coordinates location;
   private FacingOption facing;
 
@@ -17,12 +18,12 @@ public class Robot implements MovableToy {
 
   @Override
   public void printLocation() {
-    System.out.printf(
-        "%d,%d,%s\n",
+    output.println(String.format(
+        "%d,%d,%s",
         location.x,
         location.y,
         facing
-    );
+    ));
   }
 
   @Override

@@ -5,6 +5,7 @@ public class Board implements MoveVerifier {
   private final ArrayList<MovableToy> toys;
   private final int width;
   private final int height;
+  private final UserOutput output = new TerminalOutput();
   private MovableToy activeToy = null;
 
   public Board(int width, int height) {
@@ -50,10 +51,10 @@ public class Board implements MoveVerifier {
 
   private void changeActiveToy(int index) {
     if (index < 0 || index >= toys.size()) {
-      System.out.println("Invalid robot index selected.");
+      output.println("Invalid robot index selected.");
     } else {
       activeToy = toys.get(index);
-      System.out.print("Active location: ");
+      output.print("Active location: ");
       activeToy.printLocation();
     }
   }
@@ -74,12 +75,13 @@ public class Board implements MoveVerifier {
   }
 
   private void reportToys() {
-    System.out.printf("%d robot%s present.\n", toys.size(), toys.size() != 1 ? "s are" : " is");
+    output.println(
+        String.format("%d robot%s present.", toys.size(), toys.size() != 1 ? "s are" : " is"));
     int active = -1;
 
     for (int i = 0; i < toys.size(); i++) {
       MovableToy toy = toys.get(i);
-      System.out.printf("%s %d: ", toy.getIdentity(), i + 1);
+      output.print(String.format("%s %d: ", toy.getIdentity(), i + 1));
       toy.printLocation();
       if (toy == activeToy) {
         active = i + 1;
@@ -87,9 +89,9 @@ public class Board implements MoveVerifier {
     }
 
     if (active != -1) {
-      System.out.printf("Active %s: %d\n", toys.get(active - 1).getIdentity(), active);
+      output.println(String.format("Active %s: %d", toys.get(active - 1).getIdentity(), active));
     } else {
-      System.out.println("No active toy");
+      output.println("No active toy");
     }
   }
 
