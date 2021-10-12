@@ -26,6 +26,7 @@ public class UserInputHandler {
   }
 
 
+  // Entry point. Either provide no arguments, or a single argument in the form of a text file.
   public static void main(String[] argv) {
     UserInput inputScanner;
     if (argv.length == 1) {
