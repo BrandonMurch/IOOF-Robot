@@ -5,6 +5,8 @@ public class UserInputHandler {
   public static void handleInput(UserInput inputScanner, Board board) {
     InputOption selectedOption = null;
 
+//    If using command line, hasNext will always be true to allow more commands to be entered.
+//    This will rely on quit to exit. Files will return false to hasNext at the end of the file.
     while (inputScanner.hasNext() && selectedOption != InputOption.QUIT) {
       String[] userInputSplit = inputScanner
           .nextLine()
