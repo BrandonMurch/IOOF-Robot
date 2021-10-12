@@ -2,7 +2,7 @@ public interface MovableToy {
 
   void printLocation();
 
-  void printLocation(String index);
+  String getIdentity();
 
   Coordinates getLocation();
 
