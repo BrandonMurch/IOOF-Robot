@@ -4,7 +4,7 @@ public abstract class InputAbstract {
 
   Scanner input;
 
-  public UserInput(Scanner input) {
+  public InputAbstract(Scanner input) {
     this.input = input;
   }
 

@@ -5,8 +5,8 @@ public class InputHandler {
 
   private static void printHelp() {
     System.out.println("Possible commands:");
-    System.out.print("PLACE X,Y,F \t\t Place a new robot onto the board at the specified X and Y location, facing in the F direction. F can be one of the following: ")
-    System.out.println(java.util.Arrays.asList(generalInformation.values()));
+    System.out.print("PLACE X,Y,F \t\t Place a new robot onto the board at the specified X and Y location, facing in the F direction. F can be one of the following: ");
+    System.out.println(java.util.Arrays.asList(FacingOption.values()));
     System.out.println(" MOVE \t\t Move the robot 1 space forward.");
     System.out.println(" LEFT \t\t Turn the robot 90 degrees counter-clockwise.");
     System.out.println(" RIGHT \t\t Turn the robot 90 degrees clockwise.");
@@ -15,18 +15,18 @@ public class InputHandler {
   }
 
   public static void handleInput(InputAbstract inputScanner, Board board) {
-    InputOption selectedOption = null;
+    InputCommandOption selectedOption = null;
 
 //    If using command line, hasNext will always be true to allow more commands to be entered.
 //    This will rely on quit to exit. Files will return false to hasNext at the end of the file.
-    while (inputScanner.hasNext() && selectedOption != InputOption.QUIT) {
+    while (inputScanner.hasNext() && selectedOption != InputCommandOption.QUIT) {
       String[] userInputSplit = inputScanner
           .nextLine()
           .toUpperCase()
           .split(" ");
 
       try {
-        selectedOption = InputOption.valueOf(userInputSplit[0]);
+        selectedOption = InputCommandOption.valueOf(userInputSplit[0]);
       } catch (Exception ignored) {
         System.out.println("Invalid Input");
         continue;
@@ -44,7 +44,7 @@ public class InputHandler {
   public static void main(String[] argv) {
     InputAbstract inputScanner;
     if (argv.length == 1) {
-      if argv[0].trim().toLowerCase().equals("help") {
+      if (argv[0].trim().toLowerCase().equals("help")) {
         printHelp();
         return;
       } 

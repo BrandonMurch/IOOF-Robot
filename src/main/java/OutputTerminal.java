@@ -1,4 +1,4 @@
-public class TerminalOutput implements OutputInterface {
+public class OutputTerminal implements OutputInterface {
 
   @Override
   public void print(String output) {

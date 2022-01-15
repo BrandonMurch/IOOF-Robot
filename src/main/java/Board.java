@@ -23,7 +23,7 @@ public class Board implements MoveVerifier {
   }
 
   // All InputOptions are handled, except QUIT.
-  public void applyOption(InputOption inputOption, String argumentString) {
+  public void applyOption(InputCommandOption inputOption, String argumentString) {
     switch (inputOption) {
       case ROBOT -> changeActiveToy(
           Integer.parseInt(argumentString) - 1
