@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 
-public class InputHandler {
-
+public class Main {
 
   private static void printHelp() {
     System.out.println("Possible commands:");
