@@ -52,11 +52,17 @@ public class Robot implements MovableToy {
 
 
   private Coordinates calculateNewLocation() {
-    return switch (facing) {
-      case NORTH -> new Coordinates(location.x, location.y + 1);
-      case EAST -> new Coordinates(location.x + 1, location.y);
-      case SOUTH -> new Coordinates(location.x, location.y - 1);
-      case WEST -> new Coordinates(location.x - 1, location.y);
+    switch (facing) {
+      case NORTH :
+        return new Coordinates(location.x, location.y + 1);
+      case EAST :
+        return new Coordinates(location.x + 1, location.y);
+      case SOUTH :
+        return new Coordinates(location.x, location.y - 1);
+      case WEST : 
+        return new Coordinates(location.x - 1, location.y);
+      default :
+        throw new IllegalStateException("Facing direction is not set");
     };
   }
 

@@ -25,16 +25,28 @@ public class Board implements MoveVerifier {
   // All InputOptions are handled, except QUIT.
   public void applyOption(InputCommandOption inputOption, String argumentString) {
     switch (inputOption) {
-      case ROBOT -> changeActiveToy(
+      case ROBOT :
+        changeActiveToy(
           Integer.parseInt(argumentString) - 1
-      );
-      case MOVE -> activeToy.move();
-      case LEFT -> activeToy.turnLeft();
-      case RIGHT -> activeToy.turnRight();
-      case REPORT -> reportToys();
-      case PLACE -> ToyFactory
+        );
+        break;
+      case MOVE :
+        activeToy.move();
+        break;
+      case LEFT :
+        activeToy.turnLeft();
+        break;
+      case RIGHT :
+        activeToy.turnRight();
+        break;
+      case REPORT : 
+        reportToys();
+        break;
+      case PLACE :
+        ToyFactory
           .createToyFromStrings(argumentString.split(","), this)
           .ifPresent(this::addToy);
+        break;
     }
   }
 
