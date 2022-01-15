@@ -56,6 +56,7 @@ public class Main {
       }
     } else {
       inputScanner = new InputTerminal();
+      System.out.println("Please enter a valid command:");
     }
 
     Board board = new Board(5, 5);
