@@ -1,4 +1,4 @@
-public interface UserOutput {
+public interface OutputInterface {
 
   void print(String output);
 

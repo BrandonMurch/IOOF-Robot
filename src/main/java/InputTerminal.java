@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class TerminalInput extends UserInput {
+public class InputTerminal extends InputAbstract {
 
-  public TerminalInput() {
+  public InputTerminal() {
     super(new Scanner(System.in));
   }
 

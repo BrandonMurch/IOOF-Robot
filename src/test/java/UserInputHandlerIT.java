@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class UserInputHandlerIT {
+class InputHandlerIT {
 
   private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
@@ -16,14 +16,9 @@ class UserInputHandlerIT {
   }
 
   @Test
-  void commandLineInput() {
-
-  }
-
-  @Test
   void textFileInputSanityTest() {
     String[] arguments = {"src/test/resources/testCommands.txt"};
-    UserInputHandler.main(arguments);
+    InputHandler.main(arguments);
     assertTrue(outputStreamCaptor.toString().length() > 0);
     assertFalse(outputStreamCaptor.toString().contains("File not found."));
   }
@@ -31,7 +26,7 @@ class UserInputHandlerIT {
   @Test
   void textFileInputTestAllCommandsWithPossibleCollision() {
     String[] arguments = {"src/test/resources/testCommands.txt"};
-    UserInputHandler.main(arguments);
+    InputHandler.main(arguments);
     assertTrue(outputStreamCaptor.toString()
         .contains(
             "2 robots are present."));
@@ -49,7 +44,7 @@ class UserInputHandlerIT {
   @Test
   void textFileInputTestPlaceRobotOutsideBoard() {
     String[] arguments = {"src/test/resources/testCommandsRobotOffBoard.txt"};
-    UserInputHandler.main(arguments);
+    InputHandler.main(arguments);
 
     assertTrue(outputStreamCaptor.toString()
         .contains(

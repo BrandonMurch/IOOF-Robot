@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public abstract class UserInput {
+public abstract class InputAbstract {
 
   Scanner input;
 
@@ -8,14 +8,12 @@ public abstract class UserInput {
     this.input = input;
   }
 
-  abstract public boolean hasNext();
+  public boolean hasNext() {
+    return input.hasNext();
+  }
 
   public String nextLine() {
     return input.nextLine();
-  }
-
-  public Scanner getUnderlyingScanner() {
-    return input;
   }
 
   public void close() {

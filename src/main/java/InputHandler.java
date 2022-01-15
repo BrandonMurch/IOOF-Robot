@@ -1,6 +1,6 @@
 import java.io.FileNotFoundException;
 
-public class UserInputHandler {
+public class InputHandler {
 
 
   private static void printHelp() {
@@ -14,7 +14,7 @@ public class UserInputHandler {
     System.out.println(" ROBOT N \t\t Select the N'th robot that was placed on the board.");
   }
 
-  public static void handleInput(UserInput inputScanner, Board board) {
+  public static void handleInput(InputAbstract inputScanner, Board board) {
     InputOption selectedOption = null;
 
 //    If using command line, hasNext will always be true to allow more commands to be entered.
@@ -42,20 +42,20 @@ public class UserInputHandler {
 
   // Entry point. Either provide no arguments, or a single argument in the form of a text file.
   public static void main(String[] argv) {
-    UserInput inputScanner;
+    InputAbstract inputScanner;
     if (argv.length == 1) {
       if argv[0].trim().toLowerCase().equals("help") {
         printHelp();
         return;
       } 
       try {
-        inputScanner = new FileInput(argv[0]);
+        inputScanner = new InputFile(argv[0]);
       } catch (FileNotFoundException e) {
         System.out.println("File not found.");
         return;
       }
     } else {
-      inputScanner = new TerminalInput();
+      inputScanner = new InputTerminal();
     }
 
     Board board = new Board(5, 5);

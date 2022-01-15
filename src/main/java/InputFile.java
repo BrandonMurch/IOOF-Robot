@@ -2,14 +2,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FileInput extends UserInput {
+public class InputFile extends InputAbstract {
 
-  public FileInput(String fileName) throws FileNotFoundException {
+  public InputFile(String fileName) throws FileNotFoundException {
     super(new Scanner(new File(fileName)));
   }
 
   @Override
   public boolean hasNext() {
-    return super.getUnderlyingScanner().hasNext();
+    return super.hasNext();
   }
 }

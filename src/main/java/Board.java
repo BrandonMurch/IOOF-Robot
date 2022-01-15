@@ -5,7 +5,7 @@ public class Board implements MoveVerifier {
   private final ArrayList<MovableToy> toys;
   private final int width;
   private final int height;
-  private final UserOutput output = new TerminalOutput();
+  private final OutputInterface output = new OutputTerminal();
   private MovableToy activeToy = null;
 
   public Board(int width, int height) {

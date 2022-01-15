@@ -1,7 +1,7 @@
 public class Robot implements MovableToy {
 
   private final MoveVerifier controller;
-  private final UserOutput output = new TerminalOutput();
+  private final OutputInterface output = new OutputTerminal();
   private Coordinates location;
   private FacingOption facing;
 
