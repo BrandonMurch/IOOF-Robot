@@ -5,7 +5,7 @@ I took an object-oriented to minimize global mutable state which improves stabil
 
 Each robot controls its own position. When a move is requested, the robot verifies with the board that the move is possible, then it will update its own private variable. To verify the move, the board first checks the requested location against the board borders. Then checks with each robot on the board to see if there is already a robot in the requested location. 
 
-Using this approach, the time complexity of moving a robot is increased from O(1) to O(n) where n is the number of robots. However the time complexity for reporting and changing is reduced compared to a naive approach of using a matrix from O(x * y) where x and y are the dimensions of the board, to O(n). This provides a great advantage for a sparsely filled board, but less so for a densely filled one.
+Using this approach, the time complexity of moving a robot is increased from O(1) to O(n) where n is the number of robots. However the time complexity for reporting all robots and changing between robots is reduced compared to a naive approach of using a matrix from O(x * y) where x and y are the dimensions of the board, to O(n). This provides a great advantage for a sparsely filled board, but less so for a densely filled one.
 
 The program allows for future expansion of the program with the ability to add more toys that move differently by extending the movableToy class. For example, a "knight" piece could be easily added in the future which moves forward twice and left once.
 
@@ -15,15 +15,26 @@ The method of input can be changed depending on the command line arguments. See 
 
 ## Executing program from command line
 
-To execute this program, run using the entry class InputHandler. For example: \
-```java -classpath target/classes InputHandler ```
+Within the main directory of this program are the .jar file and a commands.txt file for testing. To execute this, ensure both the .jar file and the commands.txt file are within the same directory. Then run:
 
-This program has two options for commandline arguments
+```java -jar IOOF.Robot-1.0.jar commands.txt ```
+
+More generally, this program has two options for command line arguments
 
 1. No argument (This will cause the program to rely on further command line instructions)
 2. File name / path based on present working directory (This will read in commands from the specified text file). Please put each command on a new line.
 
 <br><br>
+
+## Environment Specifics
+This program is written in Java 13, uses Maven to handle dependencies and compiling, and was compiled on Linux using openjdk-13.
+
+To re-compile the jar, run  ```mvn package```. 
+
+To run all unit / integration tests, run  ```mvn test```
+
+<br><br>
+
 
 ## Possible options within the program:
 
@@ -37,6 +48,6 @@ This program has two options for commandline arguments
 6. ```REPORT``` - Reports the number of robots on the board, each robots position, and the active
    robot.
 
-### Further information
+### Further information about the challenge
 
 Visit https://github.com/ioof-holdings/recruitment/wiki/Robot-Challenge for more information.
