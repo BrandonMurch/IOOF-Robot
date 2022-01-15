@@ -7,6 +7,8 @@ Each robot controls its own position. When a move is requested, the robot verifi
 
 Using this approach, the time complexity of moving a robot is increased from O(1) to O(n) where n is the number of robots. However the time complexity for reporting all robots and changing between robots is reduced compared to a naive approach of using a matrix from O(x * y) where x and y are the dimensions of the board, to O(n). This provides a great advantage for a sparsely filled board, but less so for a densely filled one.
 
+In addition, space complexity is reduced from O(x * y) to O(n). This is again highly beneficial for sparsely filled boards.
+
 The program allows for future expansion of the program with the ability to add more toys that move differently by extending the movableToy class. For example, a "knight" piece could be easily added in the future which moves forward twice and left once.
 
 The method of input can be changed depending on the command line arguments. See the following section for how this is done. This can be expanded further in the future by creating a new class which extends InputAbstract.
