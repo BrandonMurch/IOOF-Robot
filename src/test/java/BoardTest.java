@@ -47,11 +47,11 @@ class BoardTest {
   @Test
   void place() {
     int robotCountBefore = board.getToys().size();
-    board.applyOption(InputOption.PLACE, "2,2,NORTH");
+    board.applyOption(InputCommandOption.PLACE, "2,2,NORTH");
     assertEquals(robotCountBefore + 1, board.getToys().size());
-    board.applyOption(InputOption.PLACE, "2,-1,NORTH");
+    board.applyOption(InputCommandOption.PLACE, "2,-1,NORTH");
     assertEquals(robotCountBefore + 1, board.getToys().size());
-    board.applyOption(InputOption.PLACE, "5,2,NORTH");
+    board.applyOption(InputCommandOption.PLACE, "5,2,NORTH");
     assertEquals(robotCountBefore + 1, board.getToys().size());
   }
 
@@ -59,7 +59,7 @@ class BoardTest {
   void reportOneRobot() {
     Robot robot = new Robot(3, 3, FacingOption.NORTH, board);
     board.addToy(robot);
-    board.applyOption(InputOption.REPORT, "");
+    board.applyOption(InputCommandOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("1 robot is present."));
     assertTrue(outputStreamCaptor.toString().contains("Active Robot: 1"));
   }
@@ -69,7 +69,7 @@ class BoardTest {
     board.addToy(new Robot(3, 3, FacingOption.NORTH, board));
     board.addToy(new Robot(4, 4, FacingOption.NORTH, board));
 
-    board.applyOption(InputOption.REPORT, "");
+    board.applyOption(InputCommandOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("2 robots are present."));
     assertTrue(outputStreamCaptor.toString().contains("Active Robot: 1"));
   }
@@ -78,9 +78,9 @@ class BoardTest {
   void changeActive() {
     board.addToy(new Robot(3, 3, FacingOption.NORTH, board));
     board.addToy(new Robot(4, 4, FacingOption.NORTH, board));
-    board.applyOption(InputOption.ROBOT, "2");
+    board.applyOption(InputCommandOption.ROBOT, "2");
 
-    board.applyOption(InputOption.REPORT, "");
+    board.applyOption(InputCommandOption.REPORT, "");
     assertTrue(outputStreamCaptor.toString().contains("2 robots are present."));
     assertTrue(outputStreamCaptor.toString().contains("Active Robot: 2"));
   }
