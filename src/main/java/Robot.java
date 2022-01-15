@@ -51,7 +51,7 @@ public class Robot implements MovableToy {
   }
 
 
-  private Coordinates calculateNewLocation() {
+  private Coordinates calculateNewLocation() throws IllegalStateException {
     switch (facing) {
       case NORTH :
         return new Coordinates(location.x, location.y + 1);
@@ -61,9 +61,9 @@ public class Robot implements MovableToy {
         return new Coordinates(location.x, location.y - 1);
       case WEST : 
         return new Coordinates(location.x - 1, location.y);
-      default :
-        throw new IllegalStateException("Facing direction is not set");
     };
+
+    throw new IllegalStateException("Facing direction is not set");
   }
 
   // Keep integer within options list. Example: List length = 4, 5 becomes 1.
