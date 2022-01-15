@@ -5,13 +5,13 @@ public class InputHandler {
 
   private static void printHelp() {
     System.out.println("Possible commands:");
-    System.out.print("PLACE X,Y,F \t\t Place a new robot onto the board at the specified X and Y location, facing in the F direction. F can be one of the following: ");
+    System.out.print("PLACE X,Y,F \t Place a new robot onto the board at the specified X and Y location, facing in the F direction. F can be one of the following: ");
     System.out.println(java.util.Arrays.asList(FacingOption.values()));
     System.out.println(" MOVE \t\t Move the robot 1 space forward.");
     System.out.println(" LEFT \t\t Turn the robot 90 degrees counter-clockwise.");
     System.out.println(" RIGHT \t\t Turn the robot 90 degrees clockwise.");
-    System.out.println(" Report \t\t Report all robots on the board, and which one is active.");
-    System.out.println(" ROBOT N \t\t Select the N'th robot that was placed on the board.");
+    System.out.println(" Report \t Report all robots on the board, and which one is active.");
+    System.out.println(" ROBOT N \t Select the N'th robot that was placed on the board.");
   }
 
   public static void handleInput(InputAbstract inputScanner, Board board) {
@@ -29,6 +29,7 @@ public class InputHandler {
         selectedOption = InputCommandOption.valueOf(userInputSplit[0]);
       } catch (Exception ignored) {
         System.out.println("Invalid Input");
+        printHelp();
         continue;
       }
 
